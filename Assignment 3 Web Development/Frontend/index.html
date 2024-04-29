@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex justify-center items-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
+        <h2 class="text-center text-2xl font-bold mb-6">Job Application Form</h2>
+        <form id="jobApplicationForm" method="post">
+            <!-- Form fields here -->
+            <div class="mb-4">
+                <label for="first_name" class="block mb-1">First Name:</label>
+                <input type="text" id="first_name" name="first_name" required class="w-full px-3 py-2 border rounded-md">
+            </div>
+
+            <div class="mb-4">
+                <label for="last_name" class="block mb-1">Last Name:</label>
+                <input type="text" id="last_name" name="last_name" required class="w-full px-3 py-2 border rounded-md">
+            </div>
+
+            <div class="mb-4">
+                <label for="email" class="block mb-1">Email:</label>
+                <input type="email" id="email" name="email" required class="w-full px-3 py-2 border rounded-md">
+            </div>
+
+            <div class="mb-4">
+                <label for="phone_number" class="block mb-1">Phone Number:</label>
+                <input type="tel" id="phone_number" name="phone_number" required class="w-full px-3 py-2 border rounded-md">
+            </div>
+
+            <div class="mb-4">
+                <label for="address" class="block mb-1">Address:</label>
+                <textarea id="address" name="address" required class="w-full px-3 py-2 border rounded-md"></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label class="block mb-1">Gender:</label>
+                <div>
+                    <input type="radio" id="male" name="gender" value="male" required class="mr-2">
+                    <label for="male" class="mr-4">Male</label>
+                    <input type="radio" id="female" name="gender" value="female" required class="mr-2">
+                    <label for="female">Female</label>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label for="dob" class="block mb-1">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required class="w-full px-3 py-2 border rounded-md">
+            </div>
+
+            <div class="mb-4">
+                <label class="block mb-1">Qualification:</label>
+                <select id="qualification" name="qualification" required class="w-full px-3 py-2 border rounded-md">
+                    <option value="">Select Qualification</option>
+                    <option value="btech">B.Tech</option>
+                    <option value="mtech">M.Tech</option>
+                    <option value="bachelor">Bachelor's Degree</option>
+                    <option value="master">Master's Degree</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label class="block mb-1">Skills:</label>
+                <div>
+                    <input type="checkbox" id="html" name="skills[]" value="HTML" class="mr-2">
+                    <label for="html" class="mr-4">HTML</label>
+                    <input type="checkbox" id="css" name="skills[]" value="CSS" class="mr-2">
+                    <label for="css" class="mr-4">CSS</label>
+                    <input type="checkbox" id="javascript" name="skills[]" value="JavaScript" class="mr-2">
+                    <label for="javascript" class="mr-4">JavaScript</label>
+                    <input type="checkbox" id="php" name="skills[]" value="Flask" class="mr-2">
+                    <label for="php">Flask</label>
+                </div>
+            </div>
+
+            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">Submit</button>
+        </form>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 w-[60%] bg-gray-900 bg-opacity-50 flex justify-center items-center hidden">
+        <div class="bg-white p-8 rounded-lg shadow-md max-w-md">
+            <h2 class="text-center text-2xl font-bold mb-6">Submitted Data</h2>
+            <div id="submittedData" class="mb-6"></div>
+            <button id="saveData" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 mr-4">Save</button>
+            <button id="closeModal" class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">Close</button>
+        </div>
+    </div>
+
+    <!-- Include JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
