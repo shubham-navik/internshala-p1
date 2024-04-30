@@ -1,0 +1,111 @@
+CREATE TABLE customers (
+  customer_id INT NOT NULL AUTO_INCREMENT,
+  first_name VARCHAR(255) NOT NULL,
+  last_name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  phone_number VARCHAR(255) NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  city VARCHAR(255) NOT NULL,
+  state VARCHAR(255) NOT NULL,
+  zip_code VARCHAR(255) NOT NULL,
+  PRIMARY KEY (customer_id)
+);
+
+This schema creates a table called customers with the following columns:
+
+customer_id:  
+            The primary key of the table. This column is an integer that is automatically incremented for each new customer.
+
+first_name: 
+            The customer's first name. This column is a string that can be up to 255 characters long.
+
+last_name: 
+            The customer's last name. This column is a string that can be up to 255 characters long.
+
+email: 
+            The customer's email address. This column is a string that can be up to 255 characters long.
+
+phone_number:
+             The customer's phone number. This column is a string that can be up to 255 characters long.
+
+address:
+             The customer's address. This column is a string that can be up to 255 characters long.
+
+city:         
+             The customer's city. This column is a string that can be up to 255 characters long.
+
+state:
+             The customer's state. This column is a string that can be up to 255 characters long.
+
+zip_code: 
+            The customer's zip code. This column is a string that can be up to 255 characters long.
+
+
+
+
+This schema can be used to store basic information about customers. You can add additional columns to the table to store more information, such as the customer's date of birth, gender, or purchase history.
+You can also create additional tables to store related information, such as a table to store orders or a table to store products. You can then link the tables together using foreign keys. For example, you could create a table called orders with a customer_id column that references the customer_id column in the customers table. This would allow you to track which orders belong to which customers.
+
+
+_____*_______________ CRUD-OPERATIONS_______________*______
+
+
+INSERT INTO customers (first_name, last_name, email, phone_number, address, city, state, zip_code)
+VALUES ('John', 'Doe', 'john.doe@example.com', '123-456-7890', '123 Main St', 'Anytown', 'NY', '12345');
+
+
+SELECT * FROM customers;
+
+-- Retrieve all customers
+SELECT * FROM customers;
+
+-- Retrieve a specific customer by ID
+SELECT * FROM customers WHERE customer_id = 1;
+
+-- Retrieve customers by city
+SELECT * FROM customers WHERE city = 'Anytown';
+
+-- Update customer information
+UPDATE customers 
+SET phone_number = '987-654-3210', city = 'Newtown' 
+WHERE customer_id = 1;
+
+SELECT * FROM customers;
+-- Delete a specific customer by ID
+DELETE FROM customers WHERE customer_id = 1;
+
+-- Delete all customers (use with caution!)
+-- DELETE FROM customers;
+
+-- Inserting more data into the customers table
+INSERT INTO customers (first_name, last_name, email, phone_number, address, city, state, zip_code)
+VALUES 
+('Alice', 'Smith', 'alice.smith@example.com', '456-789-1234', '456 Oak St', 'Smallville', 'CA', '98765'),
+('Bob', 'Johnson', 'bob.johnson@example.com', '789-123-4567', '789 Pine Ave', 'Metropolis', 'IL', '54321'),
+('Emily', 'Davis', 'emily.davis@example.com', '321-654-9870', '321 Elm St', 'Springfield', 'MA', '24680');
+
+
+SELECT * FROM customers;
+
+
+-- SELECT * FROM customers;
+
+
+
+-- Additinal feature
+
+
+-- Data Validation:
+
+-- Adding UNIQUE constraint on email column
+ALTER TABLE customers ADD CONSTRAINT unique_email UNIQUE (email);
+
+-- Adding CHECK constraint to validate phone number format
+ALTER TABLE customers ADD CONSTRAINT valid_phone_number CHECK (phone_number REGEXP '^[0-9]{3}-[0-9]{3}-[0-9]{4}$');
+
+-- indexing
+
+-- Creating indexes on frequently queried columns
+CREATE INDEX idx_city ON customers (city);
+CREATE INDEX idx_state ON customers (state);
+
